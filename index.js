@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require("cors")
 const koneksi = require('./config/database');
 const app = express();
+app.use(cors());
 // const PORT = process.env.PORT || 5000;
 // set body parser
 app.use(bodyParser.json());

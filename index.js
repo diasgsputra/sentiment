@@ -58,8 +58,8 @@ app.get('/sentiment', (req, res) => {
 app.put('/sales-report', (req, res) => {
         // buat variabel penampung data dan query sql
         const data = { ...req.body };
-        const querySearch = 'SELECT * FROM sales-report WHERE id = ?';
-        const queryUpdate = 'UPDATE sales-report SET ? WHERE id = ?';
+        const querySearch = 'SELECT * FROM sales_report WHERE id = ?';
+        const queryUpdate = 'UPDATE sales_report SET ? WHERE id = ?';
     
         // jalankan query untuk melakukan pencarian data
         koneksi.query(querySearch, 1, (err, rows, field) => {
@@ -89,7 +89,7 @@ app.put('/sales-report', (req, res) => {
 
 // read data / get data
 app.get('/sales-report', (req, res) => {
-    const querySql = 'SELECT * FROM sales-report';
+    const querySql = 'SELECT * FROM sales_report';
 
     koneksi.query(querySql, (err, rows, field) => {
         if (err) {

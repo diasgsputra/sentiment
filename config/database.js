@@ -5,11 +5,16 @@ const koneksi = mysql.createConnection({
     // user: "root",
     // password: "",
     // database: "db_sentiment",
-    host: "sql12.freemysqlhosting.net",
-    user: "sql12613118",
-    password: "WADlKk7axY",
-    database: "sql12613118",
+    // host: "sql12.freemysqlhosting.net",
+    // user: "sql12613118",
+    // password: "WADlKk7axY",
+    // database: "sql12613118",
     // port: 3306,
+    host: "db4free.net",
+    user: "rootvp123",
+    password: "rootvp123",
+    database: "dbviapulsa",
+    port: 3306,
     multipleStatements: true
 });
 // koneksi database

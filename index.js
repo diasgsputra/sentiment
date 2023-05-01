@@ -53,9 +53,17 @@ app.get('/sentiment', (req, res) => {
             return res.status(500).json({ message: 'Ada kesalahan', error: err });
         }
 
+        // modify the createdAt property of each row
+        rows = rows.map(row => {
+            const createdAt = new Date(row.createdAt);
+            const formattedDate = createdAt.toLocaleString('en-US', { timeZone: 'Asia/Jakarta', hour12: false });
+            return { ...row, createdAt: formattedDate };
+        });
+
         res.status(200).json({ success: true, data: rows });
     });
 });
+
 
 app.put('/sales-report', (req, res) => {
         // buat variabel penampung data dan query sql
@@ -91,6 +99,21 @@ app.put('/sales-report', (req, res) => {
 
 
 // read data / get data
+// app.get('/sales-report', (req, res) => {
+//     const querySql = 'SELECT * FROM sales_report';
+
+//     koneksi.query(querySql, (err, rows, field) => {
+//         if (err) {
+//             return res.status(500).json({ message: 'Ada kesalahan', error: err });
+//         }
+
+//         res.status(200).json({ success: true, data: rows });
+//     });
+// });
+
+// app.listen(8000, () => {
+// 	console.log('server started on port 8000');
+// });
 app.get('/sales-report', (req, res) => {
     const querySql = 'SELECT * FROM sales_report';
 
@@ -99,10 +122,16 @@ app.get('/sales-report', (req, res) => {
             return res.status(500).json({ message: 'Ada kesalahan', error: err });
         }
 
+        // modify the createdAt property of each row
+        rows = rows.map(row => {
+            const createdAt = new Date(row.createdAt);
+            const formattedDate = createdAt.toLocaleString('en-US', { timeZone: 'Asia/Jakarta', hour12: false });
+            return { ...row, createdAt: formattedDate };
+        });
+
         res.status(200).json({ success: true, data: rows });
     });
 });
-
 app.listen(8000, () => {
 	console.log('server started on port 8000');
 });

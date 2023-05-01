@@ -16,6 +16,8 @@ app.put('/sentiment', (req, res) => {
         const querySearch = 'SELECT * FROM sentiment WHERE id = ?';
         const queryUpdate = 'UPDATE sentiment SET ? WHERE id = ?';
     
+        // set createdAt to current datetime
+        data.createdAt = new Date();
         // jalankan query untuk melakukan pencarian data
         koneksi.query(querySearch, 1, (err, rows, field) => {
             // error handling
@@ -60,7 +62,8 @@ app.put('/sales-report', (req, res) => {
         const data = { ...req.body };
         const querySearch = 'SELECT * FROM sales_report WHERE id = ?';
         const queryUpdate = 'UPDATE sales_report SET ? WHERE id = ?';
-    
+        // set createdAt to current datetime
+        data.createdAt = new Date();
         // jalankan query untuk melakukan pencarian data
         koneksi.query(querySearch, 1, (err, rows, field) => {
             // error handling
